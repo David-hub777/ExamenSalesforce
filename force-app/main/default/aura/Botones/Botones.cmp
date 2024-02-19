@@ -16,7 +16,7 @@
         <aura:iteration items="{!v.cadenaGrabacion}" var="secuencia">
             <li>{!secuencia}</li>
             <aura:if isTrue="{!secuencia == ','}">
-                <h2>Nueva Grabacion</h2><br/>
+                <h2>Error: Grabacion Nula!!!!!!!!!</h2><br/>
             </aura:if>
         </aura:iteration>
     </ul>
