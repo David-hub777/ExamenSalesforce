@@ -8,7 +8,17 @@
     <input type="button" value="Clear" onclick="{!c.borrarPantalla}"/>
     <br/>
     <br/>
-    <aura:attribute name="cadenaGrabacion" type="String" default=""/>
+    <aura:attribute name="cadenaGrabacion" type="String[]" default="[]"/>
+    <h1>Secuencias:</h1>
+    <ul>
+        <!-- Iterar sobre las secuencias y mostrarlas por separado -->
+        <aura:iteration items="{!v.cadenaGrabacion}" var="secuencia">
+            <li>{!secuencia}</li>
+            <aura:if isTrue="{!secuencia == ','}">
+                <h2>Nueva Grabacion</h2><br/>
+            </aura:if>
+        </aura:iteration>
+    </ul>
     <h1>{!v.cadenaGrabacion}</h1>
     <br/>
     <br/>
