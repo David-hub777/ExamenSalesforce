@@ -1,6 +1,6 @@
 ({
     myAction : function(component, event, helper) {
-
+        console.log("Inicializando Eventos...");
     },
     manejarEvento0 : function(component, event, helper) {
         var evt = $A.get("e.c:Evento");
