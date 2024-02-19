@@ -9,10 +9,15 @@ public with sharing class Apex {
     }
 
     @AuraEnabled
-    public static List<Account> getListCadenas(){
+    public static List<String> getListCadenas(){
+        List<String> cadenas = new List<String>();
+
         try {
             Account[] accounts = [SELECT Name FROM Account];
-            return accounts;
+            for (Account secuencia : accounts) {
+                cadenas.add(secuencia.Name);
+            }
+            return cadenas;
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }

@@ -9,8 +9,9 @@
             "grabando": true
         });
         var cadena = evt.getParam("pasar");
-        console.log('cadena: ' + cadena);
-
+        var grabar = evt.getParam("grabando");
+        console.log('grabando: ' + grabar);
+        alert("Comenzar a grabar");
     },
     pararGrabar: function(component, event, helper) {
         var evt = $A.get("e.c:Evento");
@@ -59,6 +60,22 @@
             component.set("v.cadenaGrabacion", secuenciasActuales);
         }
         console.log('valorPasar: ' + valorPasar);
+    },
+    doInit: function(component) {
+    
+        var getListCadenas = component.get("c.getListCadenas");
+
+        getListCadenas.setCallback(this, function(response){
+            var state = response.getState();
+            if(state === "SUCCESS"){
+                var accounts = response.getReturnValue();
+                component.set("v.cadenaInicial", accounts);
+                alert("Success loading WebPage")
+            }
+        });
+
+        $A.enqueueAction(getListCadenas);
+
     }
 
 })
