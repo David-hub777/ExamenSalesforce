@@ -1,4 +1,4 @@
-<aura:component ><!-- controller="Apex" -->
+<aura:component controller="Apex"><!--  -->
     <aura:handler name="init" value="{!this}" action="{!c.myAction}"/>
     <!-- <aura:handler event="c.Evento" action="{!c.manejarEvento}"/> -->
     <input type="button" value="0" onclick="{!c.manejarEvento0}"/><span>      </span>

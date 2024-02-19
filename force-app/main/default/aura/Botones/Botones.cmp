@@ -1,3 +1,22 @@
-<aura:component>
-
+<aura:component controller="Apex">
+    <aura:handler event="c.Evento" action="{!c.manejarEvento}"/>
+    <input type="button" value="Grabar" onclick="{!c.comenzarGrabar}"/>
+    <input type="button" value="Stop" onclick="{!c.pararGrabar}"/>
+    <input type="button" value="Play" onclick="{!c.grabacion}"/>
+    <br/>
+    <input type="button" value="Save..." onclick="{!c.guardar}"/>
+    <input type="button" value="Clear" onclick="{!c.borrarPantalla}"/>
+    <aura:attribute name="secuencias" type="Account[]"/>
+	<table> 
+		<tbody>
+			<tr>
+				<th>Cadena:</th>
+			</tr>
+			<aura:iteration items="{!v.secuencias}" var="secuencia">
+				<tr>
+					<td>{!secuencia.Name}</td>
+				</tr>
+			</aura:iteration>
+		</tbody>
+	</table>
 </aura:component>	
