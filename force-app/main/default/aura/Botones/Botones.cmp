@@ -13,7 +13,6 @@
     <aura:attribute name="cadenaGrabacion" type="String[]" default="[]"/>
     <h1>Secuencias de Grabar:</h1>
     <ul>
-        <!-- Iterar sobre las secuencias y mostrarlas por separado -->
         <aura:iteration items="{!v.cadenaGrabacion}" var="secuencia">
             <li>{!secuencia}</li>
             <aura:if isTrue="{!secuencia == ','}">
@@ -32,8 +31,8 @@
     </ul>
     <br/>
     <br/>
-    <aura:attribute name="secuencias" type="Account[]"/>
-	<table> 
+    <!-- <aura:attribute name="secuencias" type="Account[]"/> -->
+	<!-- <table> 
 		<tbody>
 			<tr>
 				<th>Cadena:</th>
@@ -44,5 +43,5 @@
 				</tr>
 			</aura:iteration>
 		</tbody>
-	</table>
+	</table> -->
 </aura:component>	

@@ -26,6 +26,7 @@
             "grabar": false,
             "pasar": ""
         });
+        evento.fire();
         // event.setParams();
         var secuenciasActuales = component.get("v.cadenaGrabacion");
         secuenciasActuales.push(component.get("v.cadenadelaGrabacion")+",");
@@ -41,31 +42,29 @@
     guardar: function(component, event, helper) {
         var insertCadenaApex = component.get("c.insertCadena"); 
         var cadenaGrabacion = component.get("v.cadenaGrabacion");
-        
-        // insertCadenaApex.setCallback(this, function(response){
-        //     var state = response.getState();
-        //     if(state === "SUCCESS"){
-        //         setTimeout(function() {
-                    
-        //         }, 1000);
-        //         alert("Exito al guardar")
-        //     }
-        // });
+        var indice = 0;
 
-        for (var i = 0; i < cadenaGrabacion.length; i++) {
-            console.log("cadenaGrabacion", cadenaGrabacion[i]);
-            setTimeout(function() {
-                    
-            }, 100);
-            insertCadenaApex.setParams({
-                "cadena": cadenaGrabacion[i],
-            });
-            setTimeout(function() {
-                    
-            }, 100);
-            $A.enqueueAction(insertCadenaApex);
+        function realizarLlamada() {
+            if (indice < cadenaGrabacion.length) {
+                insertCadenaApex.setParams({
+                    "cadena": cadenaGrabacion[indice]
+                });
+                insertCadenaApex.setCallback(this, function(response) {
+                    var state = response.getState();
+                    if (state === "SUCCESS") {
+                        indice++;
+                        setTimeout(realizarLlamada, 500); // Ajusta el tiempo de espera según sea necesario
+                    } else {
+                        console.error("Error al insertar cadena");
+                    }
+                });
+                $A.enqueueAction(insertCadenaApex);
+            } else {
+                alert("Exito al guardar");
+            }
         }
 
+        // Listar lo base de datos
         var getListCadenas = component.get("c.getListCadenas");
 
         getListCadenas.setCallback(this, function(response){
