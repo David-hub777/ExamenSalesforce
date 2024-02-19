@@ -1,6 +1,6 @@
 <aura:component ><!-- controller="Apex" -->
     <!-- <aura:handler event="c.Evento" action="{!c.manejarEvento}"/> -->
-    <input type="button" value="Cero" onclick="{!c.manejarEvento}"/>
-    <input type="button" value="Uno" onclick="{!c.manejarEvento}"/>
+    <input type="button" value="0" onclick="{!c.manejarEvento0}"/><span>      </span>
+    <input type="button" value="1" onclick="{!c.manejarEvento}"/>
     <aura:attribute name="valorPasado" type="Integer" default="0"/>
 </aura:component>	
