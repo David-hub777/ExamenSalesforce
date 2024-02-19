@@ -1,44 +1,51 @@
 ({
-    myAction : function(component, event, helper) {
+    activarGrabacion : function(component, event, helper) {
         console.log("Inicializando Eventos...");
-        var prueba = event.getParam("grabando");
-        console.log('grabando: ' + prueba);
-        var evt = $A.get("e.c:Evento");
-        evt.setParams({
-            "grabando": true
-        });
-        var grabar = evt.getParam("grabando");
-        console.log('grabando: ' + grabar);
+        var evento = $A.get("e.c:comenzarGrabar");
+        // var grabar = evento.getParam("grabar");
+        var grabar = event.getParam("grabar");
+        console.log('grabando1: ' + component.get("v.egrabar"));
+        console.log('grabando2: ' + grabar);
+        component.set("v.egrabar", grabar);
+        console.log('grabando1: ' + component.get("v.egrabar"));
+        // var prueba = event.getParam("grabar");
+        // console.log('grabar: ' + prueba);
+        
+        // var grabar = evt.getParam("grabando");
+        // console.log('grabando: ' + grabar);
     },
     manejarEvento0 : function(component, event, helper) {
+        var grabar = component.get("v.egrabar");
+        console.log('grabando2: ' + grabar);
         var evt = $A.get("e.c:Evento");
-        var valorExistente = evt.getParam("pasar");
-        var grabando = evt.getParam("grabando");
-        if(grabando){
+        var valorExistente = component.get("v.secuencia");
+        var valorNuevo = valorExistente + "0";
+        component.set("v.secuencia", valorNuevo);
+        if(grabar){
             console.log("evt: " + evt);
             evt.setParams({
-                "pasar": valorExistente + 0 
+                "pasar": valorNuevo
             });
             evt.fire();
         }
-        var prueba = evt.getParam("grabando");
-        console.log('grabando: ' + prueba + valorExistente);
+        console.log('valor: ' + evt.getParam('pasar'));
         
         // event.set("v.valorEvento", valorPasado);
     },
     manejarEvento1 : function(component, event, helper) {
+        var grabar = component.get("v.egrabar");
+        console.log('grabando2: ' + grabar);
         var evt = $A.get("e.c:Evento");
-        var valorExistente = evt.getParam("pasar");
-        var grabando = evt.getParam("grabando");
-        if(grabando){
+        var valorExistente = component.get("v.secuencia");
+        var valorNuevo = valorExistente + "1";
+        component.set("v.secuencia", valorNuevo);
+        if(grabar){
+            console.log("evt: " + evt);
             evt.setParams({
-                "pasar": valorExistente + 1 
+                "pasar": valorNuevo
             });
-            console.log("Evento Value: " + evt);
             evt.fire();
         }
-        var prueba = evt.getParam("grabando");
-        console.log('grabando: ' + prueba);
-        // event.set("v.valorEvento", valorPasado);
-    },
+        console.log('valor: ' + evt.getParam('pasar'));
+    }
 })

@@ -3,20 +3,28 @@
 
     },
     comenzarGrabar : function(component, event, helper) {
-        var evt = $A.get("e.c:Evento");
+        // var evt = $A.get("e.c:Evento");
         // var grabando = evt.getParam("grabando");
-        evt.setParams({
-            "grabando": true
+        // evt.setParams({
+        //     "grabando": true
+        // });
+
+        var evento = $A.get("e.c:comenzarGrabar");
+        evento.setParams({
+            "grabar": true
         });
+        evento.fire();
+
+
         var cadena = evt.getParam("pasar");
-        var grabar = evt.getParam("grabando");
-        console.log('grabando: ' + grabar);
+        var grabar = evento.getParam("grabar");
+        console.log('grabar2: ' + grabar);
         alert("Comenzar a grabar");
     },
     pararGrabar: function(component, event, helper) {
-        var evt = $A.get("e.c:Evento");
-        evt.setParams({
-            "grabando": false
+        var evento = $A.get("e.c:comenzarGrabar");
+        evento.setParams({
+            "grabar": false
         });
         var secuenciasActuales = component.get("v.cadenaGrabacion");
         secuenciasActuales.push(",");
@@ -55,10 +63,10 @@
     manejarEvento: function(component, event, helper) {
         var valorPasar = event.getParam("pasar");
         var secuenciasActuales = component.get("v.cadenaGrabacion");
-        if (event.getParam("v.grabar")) {
+        // if (event.getParam("v.grabar")) {
             secuenciasActuales.push(valorPasar);
             component.set("v.cadenaGrabacion", secuenciasActuales);
-        }
+        // }
         console.log('valorPasar: ' + valorPasar);
     },
     doInit: function(component) {

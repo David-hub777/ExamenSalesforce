@@ -1,5 +1,5 @@
 <aura:component controller="Apex">
-    <aura:handler event="c.Evento" action="{!c.manejarEvento}"/>
+    <aura:handler event="c:Evento" action="{!c.manejarEvento}"/>
     <input type="button" value="Grabar" onclick="{!c.comenzarGrabar}"/>
     <input type="button" value="Stop" onclick="{!c.pararGrabar}"/>
     <input type="button" value="Play" onclick="{!c.grabacion}"/>
@@ -8,8 +8,9 @@
     <input type="button" value="Clear" onclick="{!c.borrarPantalla}"/>
     <br/>
     <br/>
+    <aura:attribute name="cadenadelaGrabacion" type="String" default="[]"/>
     <aura:attribute name="cadenaGrabacion" type="String[]" default="[]"/>
-    <h1>Secuencias:</h1>
+    <h1>Secuencias de Grabar:</h1>
     <ul>
         <!-- Iterar sobre las secuencias y mostrarlas por separado -->
         <aura:iteration items="{!v.cadenaGrabacion}" var="secuencia">
