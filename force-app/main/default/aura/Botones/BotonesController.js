@@ -35,9 +35,15 @@
     },
     grabacion: function(component, event, helper) {
         var cadenaGrabacion = component.get("v.cadenaGrabacion");
-        for (var i = 0; i < cadenaGrabacion.length; i++) {
-            console.log(cadenaGrabacion[i]);
+        var indice = 0;
+        function temporizador() {
+            if (indice < cadenaGrabacion.length) {
+                console.log(cadenaGrabacion[indice]);
+                indice++;
+                setTimeout(temporizador, 1000); 
+            }
         }
+        temporizador();
     },
     guardar: function(component, event, helper) {
         var insertCadenaApex = component.get("c.insertCadena"); 
