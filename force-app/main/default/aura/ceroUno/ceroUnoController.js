@@ -8,6 +8,7 @@
         console.log('grabando2: ' + grabar);
         component.set("v.egrabar", grabar);
         console.log('grabando1: ' + component.get("v.egrabar"));
+        component.set("v.secuencia", "");
         // var prueba = event.getParam("grabar");
         // console.log('grabar: ' + prueba);
         
