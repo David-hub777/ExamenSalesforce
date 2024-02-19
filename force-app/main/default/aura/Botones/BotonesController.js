@@ -8,6 +8,9 @@
         evt.setParams({
             "grabando": true
         });
+        var cadena = evt.getParam("pasar");
+        console.log('cadena: ' + cadena);
+
     },
     pararGrabar: function(component, event, helper) {
         var evt = $A.get("e.c:Evento");
@@ -25,5 +28,10 @@
         
     },
     manejarEvento: function(component, event, helper) {
+        var valorPasar = event.getParam("pasar");
+        console.log('valorPasar: ' + valorPasar);
+        // Establecer el valor de 'cadenaGrabacion' con el valor de 'pasar'
+        component.set("v.cadenaGrabacion", valorPasar);
     }
+
 })

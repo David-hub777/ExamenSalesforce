@@ -6,6 +6,12 @@
     <br/>
     <input type="button" value="Save..." onclick="{!c.guardar}"/>
     <input type="button" value="Clear" onclick="{!c.borrarPantalla}"/>
+    <br/>
+    <br/>
+    <aura:attribute name="cadenaGrabacion" type="String" default=""/>
+    <h1>{!v.cadenaGrabacion}</h1>
+    <br/>
+    <br/>
     <aura:attribute name="secuencias" type="Account[]"/>
 	<table> 
 		<tbody>
